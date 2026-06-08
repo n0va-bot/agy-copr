@@ -1,7 +1,7 @@
 # Google's Antigravity COPR Repository
 
 ```sh
-sudo dnf copr enable n0va/agy
+sudo dnf copr enable n0va-bot/agy
 ```
 
 ## Antigravity

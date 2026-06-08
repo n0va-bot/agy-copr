@@ -3,6 +3,9 @@ name: Update Spec Files
 on:
   schedule:
     - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -47,3 +50,37 @@ jobs:
           VERSION_IDE=$(grep '^Version:' antigravity-ide.spec | awk '{print $2}')
           git commit -m "chore: update specs - antigravity ${VERSION_AGY}, cli ${VERSION_CLI}, ide ${VERSION_IDE}"
           git push
+
+      - name: Install copr-cli
+        if: steps.git-check.outputs.changes == 'true'
+        run: pip install copr-cli
+
+      - name: Write COPR config
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          mkdir -p ~/.config
+          echo "${{ secrets.COPR_CONFIG }}" > ~/.config/copr
+
+      - name: Trigger COPR builds
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          copr-cli buildscm n0va/agy \
+            --clone-url ${{ github.server_url }}/${{ github.repository }} \
+            --commit ${{ github.sha }} \
+            --spec antigravity.spec \
+            --type git \
+            --nowait
+
+          copr-cli buildscm n0va/agy \
+            --clone-url ${{ github.server_url }}/${{ github.repository }} \
+            --commit ${{ github.sha }} \
+            --spec antigravity-cli.spec \
+            --type git \
+            --nowait
+
+          copr-cli buildscm n0va/agy \
+            --clone-url ${{ github.server_url }}/${{ github.repository }} \
+            --commit ${{ github.sha }} \
+            --spec antigravity-ide.spec \
+            --type git \
+            --nowait

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Antigravity
+GenericName=AI Coding Assistant
+Comment=Google Antigravity multi-agent orchestration platform
+Exec=/usr/bin/antigravity
+Icon=antigravity
+Terminal=false
+Categories=Development;IDE;
+StartupWMClass=Antigravity

@@ -1,0 +1,16 @@
+*.src.rpm
+*.rpm
+*.tar.gz
+*.tar.xz
+RPMS/
+SRPMS/
+BUILD/
+BUILDROOT/
+/var/lib/mock/
+._*
+.DS_Store
+.idea/
+.vscode/
+.zed/
+*.swp
+*.sw

@@ -13,8 +13,8 @@ Summary:        Google Antigravity IDE - An agentic development platform
 
 License:        LicenseRef-Google-Antigravity
 URL:            https://antigravity.google/
-Source0:        https://dl.google.com/release2/j0qc3/antigravity/stable/%{version}-%{upstream_build}/linux-x64/Antigravity%%20IDE.tar.gz
-Source1:        https://dl.google.com/release2/j0qc3/antigravity/stable/%{version}-%{upstream_build}/linux-arm/Antigravity%%20IDE.tar.gz
+Source0:        https://dl.google.com/release2/j0qc3/antigravity/stable/%{version}-%{upstream_build}/linux-x64/Antigravity%%20IDE.tar.gz#/antigravity-ide-%{version}-x86_64.tar.gz
+Source1:        https://dl.google.com/release2/j0qc3/antigravity/stable/%{version}-%{upstream_build}/linux-arm/Antigravity%%20IDE.tar.gz#/antigravity-ide-%{version}-aarch64.tar.gz
 Source10:       antigravity-ide.sh
 Source11:       antigravity-ide.desktop
 Source12:       antigravity-ide-url-handler.desktop
@@ -60,18 +60,19 @@ Requires:       webkit2gtk-4.1
 Conflicts:      antigravity < 2.0
 
 %description
-Google Antigravity IDE - An agentic development platform from Google, 
+Google Antigravity IDE - An agentic development platform from Google,
 evolving the IDE into the agent-first era.
 
 This package installs the upstream prebuilt Linux release under
 /opt/antigravity-ide and provides a command-line wrapper and desktop entries.
 
 %prep
+%setup -q -c -T -n antigravity-ide
 %ifarch x86_64
-%setup -q -c -T -n antigravity-ide -b 0
+%{__tar} -xzf %{SOURCE0}
 %endif
 %ifarch aarch64
-%setup -q -c -T -n antigravity-ide -b 1
+%{__tar} -xzf %{SOURCE1}
 %endif
 
 %build

@@ -66,21 +66,21 @@ jobs:
       - name: Trigger COPR builds
         if: steps.git-check.outputs.changes == 'true'
         run: |
-          copr-cli buildscm n0va/agy \
+          copr-cli buildscm n0va-bot/agy \
             --clone-url ${{ github.server_url }}/${{ github.repository }} \
             --commit ${{ github.sha }} \
             --spec antigravity.spec \
             --type git \
             --nowait
 
-          copr-cli buildscm n0va/agy \
+          copr-cli buildscm n0va-bot/agy \
             --clone-url ${{ github.server_url }}/${{ github.repository }} \
             --commit ${{ github.sha }} \
             --spec antigravity-cli.spec \
             --type git \
             --nowait
 
-          copr-cli buildscm n0va/agy \
+          copr-cli buildscm n0va-bot/agy \
             --clone-url ${{ github.server_url }}/${{ github.repository }} \
             --commit ${{ github.sha }} \
             --spec antigravity-ide.spec \

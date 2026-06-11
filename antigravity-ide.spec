@@ -60,7 +60,7 @@ Requires:       webkit2gtk-4.1
 Conflicts:      antigravity < 2.0
 
 %description
-Google Antigravity IDE - An agentic development platform from Google,
+Google Antigravity IDE - An agentic development platform from Google, 
 evolving the IDE into the agent-first era.
 
 This package installs the upstream prebuilt Linux release under
@@ -101,5 +101,5 @@ install -Dpm0644 %{SOURCE20} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
-* Mon Jun 08 2026 n0va <n0va@example.com> - 2.0.4-1
+* Thu Jun 11 2026 n0va <n0va@example.com> - 2.0.4-1
 - Update to version 2.0.4

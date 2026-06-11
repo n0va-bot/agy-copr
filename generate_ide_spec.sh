@@ -14,6 +14,7 @@ cat <<EOF > antigravity-ide.spec
 %global _debugsource_packages 0
 %global __strip /bin/true
 %global _build_id_links none
+%global __requires_exclude ^libcurl\\.so\\.4\\(CURL_OPENSSL_4\\)\\(64bit\\)$
 
 %global package_version $PKGVER
 %global upstream_build $BUILD
@@ -40,34 +41,33 @@ Requires:       alsa-lib
 Requires:       at-spi2-core
 Requires:       bash
 Requires:       cairo
+Requires:       cups-libs
 Requires:       curl
-Requires:       dbus
+Requires:       dbus-libs
 Requires:       expat
 Requires:       glib2
 Requires:       glibc
 Requires:       gtk3
-Requires:       libcups
+Requires:       libX11
+Requires:       libXcomposite
+Requires:       libXdamage
+Requires:       libXext
+Requires:       libXfixes
+Requires:       libXrandr
 Requires:       libgcc
 Requires:       libsecret
 Requires:       libsoup3
 Requires:       libstdc++
-Requires:       libx11
 Requires:       libxcb
-Requires:       libxcomposite
-Requires:       libxdamage
-Requires:       libxext
-Requires:       libxfixes
 Requires:       libxkbcommon
 Requires:       libxkbfile
-Requires:       libxrandr
-Requires:       mesa
+Requires:       mesa-libgbm
 Requires:       nspr
 Requires:       nss
 Requires:       openssl
 Requires:       pango
 Requires:       systemd-libs
-Requires:       util-linux-libs
-Requires:       webkit2gtk-4.1
+Requires:       webkit2gtk4.1
 
 Conflicts:      antigravity < 2.0
 

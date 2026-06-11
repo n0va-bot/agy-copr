@@ -2,7 +2,7 @@
 %global _debugsource_packages 0
 %global __strip /bin/true
 %global _build_id_links none
-%global __requires_exclude ^libcurl\.so\.4\(CURL_OPENSSL_4\)\(64bit\)$
+%global __requires_exclude libcurl.*CURL_OPENSSL
 
 %global package_version 2.0.4
 %global upstream_build 6381998290370560

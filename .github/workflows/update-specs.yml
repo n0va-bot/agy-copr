@@ -62,23 +62,30 @@ jobs:
       - name: Trigger COPR builds
         if: steps.git-check.outputs.changes == 'true'
         run: |
-          copr-cli buildscm n0va-bot/agy \
-            --clone-url ${{ github.server_url }}/${{ github.repository }} \
-            --commit ${{ github.sha }} \
-            --spec antigravity.spec \
-            --type git \
-            --nowait
+          VERSION_AGY=$(grep -E '(%global package_version|Version:)' antigravity.spec | awk '{print $NF}' | grep -E '^[0-9]' | head -n1)
+          VERSION_CLI=$(grep -E '(%global package_version|Version:)' antigravity-cli.spec | awk '{print $NF}' | grep -E '^[0-9]' | head -n1)
+          VERSION_IDE=$(grep -E '(%global package_version|Version:)' antigravity-ide.spec | awk '{print $NF}' | grep -E '^[0-9]' | head -n1)
 
-          copr-cli buildscm n0va-bot/agy \
-            --clone-url ${{ github.server_url }}/${{ github.repository }} \
-            --commit ${{ github.sha }} \
-            --spec antigravity-cli.spec \
-            --type git \
-            --nowait
+          check_and_build() {
+            local package_name=$1
+            local version=$2
+            local spec_file=$3
 
-          copr-cli buildscm n0va-bot/agy \
-            --clone-url ${{ github.server_url }}/${{ github.repository }} \
-            --commit ${{ github.sha }} \
-            --spec antigravity-ide.spec \
-            --type git \
-            --nowait
+            BUILDS=$(copr-cli list-builds n0va-bot/agy --output-format json)
+
+            if echo "$BUILDS" | grep -q "\"name\": \"$package_name\",\"state\": \"succeeded\""; then
+              echo "Package $package_name already has a successful build, skipping..."
+            else
+              echo "Triggering build for $package_name..."
+              copr-cli buildscm n0va-bot/agy \
+                --clone-url ${{ github.server_url }}/${{ github.repository }} \
+                --commit ${{ github.sha }} \
+                --spec $spec_file \
+                --type git \
+                --nowait
+            fi
+          }
+
+          check_and_build "antigravity" "$VERSION_AGY" "antigravity.spec"
+          check_and_build "antigravity-cli" "$VERSION_CLI" "antigravity-cli.spec"
+          check_and_build "antigravity-ide" "$VERSION_IDE" "antigravity-ide.spec"

@@ -1,14 +1,14 @@
 %global debug_package %{nil}
 
 Name:           antigravity-cli
-Version:        1.0.10
+Version:        1.0.12
 Release:        1%{?dist}
 Summary:        Google Antigravity CLI
 
 License:        Proprietary
 URL:            https://antigravity-cli-auto-updater-974169037036.us-central1.run.app
-Source0:        https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.10-6349723456634880/linux-x64/cli_linux_x64.tar.gz
-Source1:        https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.10-6349723456634880/linux-arm/cli_linux_arm64.tar.gz
+Source0:        https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.12-6156052174077952/linux-x64/cli_linux_x64.tar.gz
+Source1:        https://storage.googleapis.com/antigravity-public/antigravity-cli/1.0.12-6156052174077952/linux-arm/cli_linux_arm64.tar.gz
 Source2:        https://raw.githubusercontent.com/google-antigravity/antigravity-cli/main/CHANGELOG.md
 
 ExclusiveArch:  x86_64 aarch64

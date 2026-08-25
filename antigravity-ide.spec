@@ -101,5 +101,5 @@ install -Dpm0644 %{SOURCE20} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
-* Mon Aug 24 2026 n0va <n0va@example.com> - 2.5.5-1
+* Tue Aug 25 2026 n0va <n0va@example.com> - 2.5.5-1
 - Update to version 2.5.5

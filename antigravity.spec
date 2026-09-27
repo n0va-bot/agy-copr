@@ -89,5 +89,5 @@ install -Dpm0644 %{buildroot}/opt/Antigravity/LICENSES.chromium.html %{buildroot
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
-* Sat Sep 26 2026 n0va <n0va@example.com> - 2.17.0-1
+* Sun Sep 27 2026 n0va <n0va@example.com> - 2.17.0-1
 - Update to version 2.17.0

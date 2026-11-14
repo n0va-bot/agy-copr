@@ -4,8 +4,8 @@
 %global _build_id_links none
 %global __requires_exclude libcurl.*CURL_OPENSSL
 
-%global package_version 2.6.0
-%global upstream_build 5526304964083712
+%global package_version 2.7.0
+%global upstream_build 4507555968450560
 
 Name:           antigravity-ide
 Version:        %{package_version}
@@ -101,5 +101,5 @@ install -Dpm0644 %{SOURCE20} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
-* Fri Nov 13 2026 n0va <n0va@example.com> - 2.6.0-1
-- Update to version 2.6.0
+* Sat Nov 14 2026 n0va <n0va@example.com> - 2.7.0-1
+- Update to version 2.7.0

@@ -4,8 +4,8 @@
 %global _build_id_links none
 %global __provides_exclude_from ^/opt/Antigravity/.*$
 %global __requires_exclude ^lib(EGL|GLESv2|ffmpeg|vk_swiftshader|vulkan)\.so.*$
-%global package_version 2.35.1
-%global upstream_build 4615540875067392
+%global package_version 2.36.0
+%global upstream_build 5596661662220288
 
 Name:           antigravity
 Version:        %{package_version}
@@ -89,5 +89,5 @@ install -Dpm0644 %{buildroot}/opt/Antigravity/LICENSES.chromium.html %{buildroot
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
-* Fri Nov 27 2026 n0va <n0va@example.com> - 2.35.1-1
-- Update to version 2.35.1
+* Sat Nov 28 2026 n0va <n0va@example.com> - 2.36.0-1
+- Update to version 2.36.0
